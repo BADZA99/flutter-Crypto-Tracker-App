@@ -1,0 +1,2 @@
+flutter pub add nomPackage.
+tous les packages sont dans le fichier pubspec.yaml
