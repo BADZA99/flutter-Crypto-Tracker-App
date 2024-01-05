@@ -1,3 +1,4 @@
+import 'package:crypto_gen/Controller/provider/crypto_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
@@ -43,11 +44,27 @@ class _CryptoGenState extends State<CryptoGen> {
           child: Container(
         padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 1.h),
         child: Column(children: [
-          Text(
+          const Text(
             'hello 👋',
             style: TextStyle(
                 fontSize: 24, color: Colors.white, fontWeight: FontWeight.bold),
-          )
+          ),
+          SizedBox(
+            height: 2.h,
+          ),
+          Consumer<CryptoDataProvider>(builder: (context, cryptoData, child) {
+            if (cryptoData.isLoading == true) {
+              return const Center(
+                child: CircularProgressIndicator(color: Colors.white),
+              );
+            }else{
+              return const Text(
+                'has data',
+                style: TextStyle(
+                    fontSize: 24, color: Colors.white, fontWeight: FontWeight.bold),
+              );
+            }
+          })
         ]),
       )),
     );
